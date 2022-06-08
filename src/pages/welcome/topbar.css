@@ -1,0 +1,11 @@
+#categories{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    color:black;
+}
+.categorie{
+    display: inline-block;
+    padding:1em .2em;
+    /* margin:.4em .2em; */
+}

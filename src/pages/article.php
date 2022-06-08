@@ -1,4 +1,5 @@
 <?php
+require_once "./welcome/topbar.php";
 require_once "./../config/db.php";
 if(isset($_GET['id'])){
     $id=$_GET['id'];
