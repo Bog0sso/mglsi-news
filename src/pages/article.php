@@ -1,23 +1,22 @@
 <?php
+require_once "./../config/db.php";
 if(isset($_GET['id'])){
     $id=$_GET['id'];
-    echo "Valeur de ID".$id;
+    $prepartedStatement=$connexion->prepare("SELECT titre,contenu,dateCreation FROM Article WHERE id=? LIMIT 1");
+    $prepartedStatement->execute([$id]);
+    $article=$prepartedStatement->fetch();
+
 }
 
 ?>
-
 <main>
     <h1></h1>
-    <section>
-            <?php 
-                foreach($articles as $article){
-                    echo 
-                        "<article class='article' href=''>
-                            <h2>$article->categorie</h2><h3>$article->titre</h3>
-                            <p>$article->contenu</p>
-                            <small>$article->dateCreation</small>
-                        </article>";
-                }
-            ?>
+    <section> 
+            <article class='article'>
+                <h2> <?=$article["categorie"]?> </h2>
+                <h3> <?=$article["titre"]?> </h3>
+                <p> <?=$article["contenu"]?> </p>
+                <small> <?=$article["dateCreation"] ?> </small>
+            </article>
     </section>
 </main>
