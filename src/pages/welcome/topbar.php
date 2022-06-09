@@ -1,6 +1,6 @@
 
 <?php
-    require_once "./../config/db.php";
+    require_once  $_SERVER['DOCUMENT_ROOT'].'./../config/db.php';
     //get different categories from database
     $query_categories="SELECT libelle FROM Categorie";
     //insert pure database data to php array
@@ -15,7 +15,7 @@
     <ul id="categories">
     <?php 
         foreach($categories as $categorie) { ?>
-            <li class='categorie'> <?=$categorie?> </li>
+            <li class='categorie'><a href="./articles_category.php?categorie=<?=$categorie?>"> <?=$categorie?> </a>  </li>
     <?php } ?>
     
     </ul>

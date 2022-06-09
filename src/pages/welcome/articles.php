@@ -1,11 +1,11 @@
 <?php
     require_once "../../models/articleModel.php";
-    $query_articles="SELECT Article.id,titre,contenu,dateCreation,Categorie.libelle  FROM Article  LEFT JOIN Categorie ON categorie = Categorie.id";
+
+    $query_articles="SELECT Article.id,titre,contenu,dateCreation,Categorie.libelle FROM Article  LEFT JOIN Categorie ON categorie = Categorie.id";
     $articles=array();
     foreach ($connexion->query($query_articles) as $row) 
     {
-        // Use of the article template object
-        // Use of the article template object
+        // Use of the article template object // play the role of ORM 
         $article=new Article();
         $article->id=$row["id"];
         $article->categorie=$row["libelle"];
@@ -18,7 +18,7 @@
 
 ?>
 <main>
-    <h1>Hot news</h1>
+    <h1> Toutes l'actualité</h1>
     <section>
         <ul id="articles">
             <?php 
@@ -33,8 +33,7 @@
                                 </article>
                             </li>
                         </a>
-                <?php } ?>
-            
+                <?php } ?>        
         </ul>
     </section>
 </main>

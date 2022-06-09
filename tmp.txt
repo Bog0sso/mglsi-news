@@ -1,0 +1,20 @@
+
+<main>
+    <!-- <h1>Hot news</h1> -->
+    <section>
+        <ul id="articles">
+            <?php 
+                foreach($arrayArticles as $article) {?>
+                        <a href='../article.php?id=<?=$article->id?>'>
+                            <li>
+                                <article class='article'>
+                                    <h3> <?=$article->titre?> </h3>
+                                    <p> <?=$article->contenu?> </p>
+                                    <small> <?=$article->dateCreation?> </small>
+                                </article>
+                            </li>
+                        </a>
+                <?php } ?>        
+        </ul>
+    </section>
+</main>
