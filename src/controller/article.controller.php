@@ -1,6 +1,6 @@
 <?php
-    if(!isset($_GET["id"]) && !isset($_GET["categorie"])){
-        require_once "./../models/article.model.php";
-        require_once "./../views/articles.view.php";
-    }
+$id = $_GET['id'];
+require_once $_SERVER['DOCUMENT_ROOT'] . ("/models/articles.model.php");
+$article = getArticle($id);
+require_once $_SERVER['DOCUMENT_ROOT'] . ("/templates/article.template.php");
 ?>
