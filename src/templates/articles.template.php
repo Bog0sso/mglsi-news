@@ -4,7 +4,7 @@
         <ul id="articles">
             <?php
             foreach ($articles as $article) { ?>
-                <a href='../article.controller.php?id=<?= $article->id ?>'>
+                <a href='../index.php?id=<?= $article->id ?>'>
                     <li>
                         <article class='article'>
                             <h2> <?= $article->categorie ?> </h2>

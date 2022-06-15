@@ -12,18 +12,18 @@ if(!isset($_GET["id"]) && !isset($_GET["categorie"])){
     require_once $_SERVER['DOCUMENT_ROOT'] . ("/models/articles.model.php");
     $articles=getArticles();
     require_once $_SERVER['DOCUMENT_ROOT'] . ("/templates/articles.template.php");
-
+    print("je viens");
 
 }
 
 if (isset($_GET["id"])) {
 
-    require_once $_SERVER['DOCUMENT_ROOT'] . ("/src/controller/article.controller.php");
+    require_once $_SERVER['DOCUMENT_ROOT'] . ("/controller/article.controller.php");
 
 } 
 
 if (isset($_GET["categorie"])) {
 
-    require_once $_SERVER['DOCUMENT_ROOT'] . ("/src/controller/articlecategory.controller.php");
+    require_once $_SERVER['DOCUMENT_ROOT'] . ("/controller/articlecategory.controller.php");
 
 }

@@ -1,17 +1,19 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . ("/models/articles.model.php");
 
+class Article
+{
+    public $id;
+    public $titre;
+    public $contenu;
+    public $dateCreation;
+    public $categorie;
+}
+
 function getArticles()
 {
     $connexion = getDBConnection();
-    class Article
-    {
-        public $id;
-        public $titre;
-        public $contenu;
-        public $dateCreation;
-        public $categorie;
-    }
+
     $query_articles = "SELECT Article.id,titre,contenu,dateCreation,Categorie.libelle FROM Article  LEFT JOIN Categorie ON categorie = Categorie.id";
     $articles = array();
     foreach ($connexion->query($query_articles) as $row) {
@@ -36,19 +38,16 @@ function getArticle($id)
     $article = $prepartedStatement->fetch();
     return $article;
 }
-function getCategorizedArticles($categorie){
-    $connexion = getDBConnection();
-    $query="SELECT Article.titre, Article.contenu, Article.dateCreation FROM Article INNER JOIN Categorie ON Article.categorie=Categorie.id  WHERE Categorie.libelle=?";
-    $prepartedStatement=$connexion->prepare($query);
-    $prepartedStatement->execute([$categorie]);
-    $categorisedArticles=$prepartedStatement->fetch();
 
-    $categoryOfArticles=array();
-    foreach($categorisedArticles as $categorisedArticle){
-        array_push($categoryOfArticles,$categorisedArticle);
-    }
-    
-    return $categoryOfArticles;
+function getCategorizedArticles($categorie)
+{
+    $connexion = getDBConnection();
+    $query = "SELECT Article.titre, Article.contenu, Article.dateCreation FROM Article INNER JOIN Categorie ON Article.categorie=Categorie.id  WHERE Categorie.libelle=?";
+    $prepartedStatement = $connexion->prepare($query);
+    $prepartedStatement->execute([$categorie]);
+    $article = $prepartedStatement->fetchAll();
+    return $article;
+
 }
 
 function getDBConnection()
