@@ -10,9 +10,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ("/templates/category.template.php");
 
 if(!isset($_GET["id"]) && !isset($_GET["categorie"])){
     require_once $_SERVER['DOCUMENT_ROOT'] . ("/models/articles.model.php");
-    $articles=getArticles();
+    $articles=getAllArticles();
     require_once $_SERVER['DOCUMENT_ROOT'] . ("/templates/articles.template.php");
-    print("je viens");
 
 }
 
