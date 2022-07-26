@@ -3,6 +3,7 @@ import java.util.Date;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import lombok.ToString;
 @Entity
 @Table(name="article")
 @Data @ToString @NoArgsConstructor @AllArgsConstructor
+@XmlRootElement
 public class Article {
     @Id @GeneratedValue( strategy = GenerationType.IDENTITY)
     private int id;

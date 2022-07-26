@@ -14,7 +14,6 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.article.articlewebservice.domaine.Article;
@@ -24,13 +23,13 @@ import com.article.articlewebservice.repository.ArticleRepository;
 public class ArticleJAXRS {
     @Autowired
     private ArticleRepository articleRepository;
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public List<Article> getAllArticles() {
 		return articleRepository.findAll();
 	}
     // C
     @POST
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Article addArticle( Article article){
         article.setDateCreation(new Date());
         article.setDateModification(new Date());
@@ -39,7 +38,7 @@ public class ArticleJAXRS {
     // R one
     @GET
     @Path("/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
 	public Article getArticle(@PathParam("id")int id){
 		return articleRepository.findById(id).orElse(null);
@@ -47,7 +46,7 @@ public class ArticleJAXRS {
 
 	// R many
     @GET
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
 	public List<Article> getManyArticle(){
 		return articleRepository.findAll();
@@ -55,7 +54,7 @@ public class ArticleJAXRS {
     //U 
 	@PUT
     @Path("/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
     public Article updateArticle(@RequestBody Article article,@PathParam("id")int id) {
         article.setId(id);
