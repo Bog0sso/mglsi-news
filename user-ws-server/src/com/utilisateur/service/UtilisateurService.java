@@ -10,7 +10,7 @@ import javax.jws.WebService;
 import com.utilisateur.domaine.Utilisateur;
 import com.utilisateur.persistence.Requete;
 
-@WebService (name="ArticleWS")
+@WebService (name="UtilisateurWS")
 
 public class UtilisateurService {
 	Requete requete;
@@ -35,7 +35,7 @@ public class UtilisateurService {
 		return this.requete.addUtilisateur( login, password);
 	}
 	// D
-	public boolean deleteArticle(@WebParam(name="id") int id) throws SQLException{
+	public boolean deleteUtilisateur(@WebParam(name="id") int id) throws SQLException{
 		return this.requete.deleteUtilisateurtById(id);
 	}
 	// U
@@ -46,5 +46,13 @@ public class UtilisateurService {
 								@WebParam(name="password") String password
 	) throws SQLException{
 		return this.requete.updateUtilisateur( id, login, password);
+	}
+	// method
+	@WebMethod(operationName = "authentifier")
+	public boolean authentifier(@WebParam(name="login") String login ,@WebParam(name="password") String password)throws SQLException {
+		Requete requete_= new Requete();
+		Utilisateur utilisateur_=requete_.getUtilisateur(login,password);
+		Utilisateur utilisateur = new Utilisateur(login, password);
+		return utilisateur.getLogin().equals(utilisateur_.getLogin()) && utilisateur_.getPassword().equals(utilisateur.getPassword());
 	}
 }

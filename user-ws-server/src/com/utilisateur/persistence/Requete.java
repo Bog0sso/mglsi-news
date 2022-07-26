@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.utilisateur.domaine.Utilisateur;
-import com.utilisateur.service.AuthentificationService;
+// import com.utilisateur.service.AuthentificationService;
 
 public class Requete {
 	
