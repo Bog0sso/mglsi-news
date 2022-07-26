@@ -10,9 +10,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -48,9 +50,12 @@ public class ArticleJAXRS {
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
-	public List<Article> getManyArticle(){
-		return articleRepository.findAll();
-	}
+	public List<Article> getManyArticle(@QueryParam("order") boolean order){
+        // ,@QueryParam("categorie") int categorie
+		// if(order)
+        return articleRepository.findAll(Sort.by(Sort.Direction.ASC,"categorie"));
+
+    }
     //U 
 	@PUT
     @Path("/{id}")
